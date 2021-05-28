@@ -1,0 +1,9 @@
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\bin\Debug\LogicDeobfuscator.exe
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\bin\Debug\LogicDeobfuscator.pdb
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\bin\Debug\dnlib.dll
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\bin\Debug\dnlib.xml
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\obj\Debug\LogicDeobfuscator.csproj.AssemblyReference.cache
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\obj\Debug\LogicDeobfuscator.csproj.CoreCompileInputs.cache
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\obj\Debug\LogicDeobfuscator.csproj.CopyComplete
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\obj\Debug\LogicDeobfuscator.exe
+C:\Users\trymz\RiderProjects\LogicDeobfuscator\obj\Debug\LogicDeobfuscator.pdb
