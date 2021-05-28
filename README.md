@@ -2,7 +2,7 @@
 ## Deobfuscator for LoGiC.NET Obfuscator.
 
 ### Supported Protections:
-- IntEncoder [X]
+- Int Encoding [X]
 - Junk [X]
 - Hash Check/Application Tampering [X]
 - Proxy Calls [ ]
