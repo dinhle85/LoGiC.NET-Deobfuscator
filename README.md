@@ -21,5 +21,5 @@
 ## Before:
 ![bilde](https://user-images.githubusercontent.com/60292167/120045361-1c324b80-c010-11eb-8a39-f34e6559568f.png)
 
-## After (May be inaccurate due to updates):
-![bilde](https://user-images.githubusercontent.com/60292167/120045377-27857700-c010-11eb-92d7-aa2b3569cd7e.png)
+## After:
+![bilde](https://user-images.githubusercontent.com/60292167/120047567-30c51280-c015-11eb-80cb-3474d16a9b42.png)
