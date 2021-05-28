@@ -5,19 +5,21 @@
 - Drag & Drop Protected Application onto Deobfuscator.
 
 ### Supported Protections:
-- Int Encoding [X]
-- Junk [X]
-- Hash Check/Application Tampering [X]
-- Proxy Calls [ ]
-- Renamer [X]
-- String Encrypter [X]
-- Watermark [X]
+- Int Encoding
+- Junk
+- Hash Check/Application Tampering
+- Renamer
+- String Encrypter
+- Watermark
+
+### Unsupported:
+- Proxy Calls
 
 ### Note:
-- Not sure if deobfuscated applications run, just so you know :P But code is readable.
+- Not sure if deobfuscated applications run properly, code is readable at least.
 
-### Before:
+## Before:
 ![bilde](https://user-images.githubusercontent.com/60292167/120045361-1c324b80-c010-11eb-8a39-f34e6559568f.png)
 
-### After (May be inaccurate due to updates):
+## After (May be inaccurate due to updates):
 ![bilde](https://user-images.githubusercontent.com/60292167/120045377-27857700-c010-11eb-92d7-aa2b3569cd7e.png)
