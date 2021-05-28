@@ -5,12 +5,12 @@
 - Drag & Drop Protected Application onto Deobfuscator.
 
 ### Supported Protections:
-- Int Encoding
-- Junk
 - Hash Check/Anti Application Tampering
-- Renamer
 - String Encrypter
+- Int Encoding
 - Watermark
+- Renamer
+- Junk
 
 ### Unsupported:
 - Proxy Calls
