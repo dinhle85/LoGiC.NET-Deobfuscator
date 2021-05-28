@@ -7,7 +7,7 @@
 ### Supported Protections:
 - Int Encoding
 - Junk
-- Hash Check/Application Tampering
+- Hash Check/Anti Application Tampering
 - Renamer
 - String Encrypter
 - Watermark
