@@ -1,5 +1,8 @@
 # LoGiC.NET-Deobfuscator
-## Deobfuscator for LoGiC.NET Obfuscator.
+## Deobfuscator for LoGiC.NET Obfuscator (https://github.com/AnErrupTion/LoGiC.NET).
+
+### Usage:
+- Drag & Drop Protected Application onto Deobfuscator.
 
 ### Supported Protections:
 - Int Encoding [X]
