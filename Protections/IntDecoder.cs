@@ -18,12 +18,7 @@ namespace LogicDeobfuscator.Protections
                     var instr = method.Body.Instructions;
                     for (var i = 0; i < instr.Count; i++)
                     {
-                        if (instr[i].OpCode != OpCodes.Ldstr || instr[i + 1].OpCode != OpCodes.Call ||
-                            !instr[i + 1].Operand.ToString().Contains("Module") ||
-                            instr[i + 2].OpCode != OpCodes.Call ||
-                            !instr[i + 2].Operand.ToString().Contains("get_Length") ||
-                            instr[i + 3].OpCode != OpCodes.Call) continue;
-                        
+                        if (instr[i].OpCode != OpCodes.Ldstr || instr[i + 2].OpCode != OpCodes.Call || !instr[i + 2].Operand.ToString().Contains("get_Length") || instr[i + 3].OpCode != OpCodes.Call) continue;
                         var res = System.Math.Abs(instr[i].Operand.ToString().Length);
                         instr[i] = Instruction.CreateLdcI4(res);
                         instr[i + 1].OpCode = OpCodes.Nop;

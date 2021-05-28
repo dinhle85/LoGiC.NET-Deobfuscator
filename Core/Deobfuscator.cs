@@ -21,8 +21,9 @@ namespace LogicDeobfuscator.Core
             new Watermark(),
             new Junk(),
             new Renamer(),
-            new IntDecoder(),
             new StringDecryptor(),
+            new IntDecoder(),
+            new ModuleCleaner(),
         };
         
         public void Execute()

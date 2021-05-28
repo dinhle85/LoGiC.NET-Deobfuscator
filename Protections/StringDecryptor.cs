@@ -12,7 +12,7 @@ namespace LogicDeobfuscator.Protections
     {
         public string Name => nameof(StringDecryptor);
         public string Description => "Decrypts strings encrypted by LoGiC.NET";
-        private static string Decrypt(string str)
+        public static string Decrypt(string str)
         {
             var array = "*$,;:!ù^*&é\"'(-è_çà)".ToCharArray();
             str = array.Aggregate(str, (current, c) => current.Replace(c.ToString(), string.Empty));
