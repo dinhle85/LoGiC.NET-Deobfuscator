@@ -2,8 +2,7 @@
 ## Deobfuscator for LoGiC.NET Obfuscator (https://github.com/AnErrupTion/LoGiC.NET).
 
 # OUTDATED
-### Todo:
-- FIX LMFAO
+## Won't be fixed because protected assemblies on newest version don't even work.
 
 ### Usage:
 - Drag & Drop Protected Application onto Deobfuscator.
