@@ -25,7 +25,7 @@ Junk
 ```
 
 ### Note:
-- Deobfuscated application will most likely have some unreadable methods because of errors and or might not be able to run.
+- Deobfuscated application will most likely have some unreadable methods because of errors (Probably because this deobfuscator doesn't support proxy calls, but I haven't bothered checking why.) and or might not be able to run.
 - I will not fix this because LoGiC.NET is unstable and only meant for learning purposes.
 
 ## Before:
