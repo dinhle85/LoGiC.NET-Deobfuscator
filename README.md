@@ -33,3 +33,9 @@ Junk
 
 ## After:
 ![bilde](https://user-images.githubusercontent.com/60292167/120541836-af8dc700-c3ea-11eb-8c78-dca727175111.png)
+
+## Credits:
+0xd4d - <a href="https://github.com/0xd4d/dnlib">dnlib</a> (The Library I chose to use for making this deobfuscator.) <br>
+MindSystemm - <a href="https://github.com/MindSystemm/SuperCalculator">Super-Calculator</a> (De4dot Blocks Cleaning Method.) <br>
+AnErruption - <a href="https://github.com/AnErrupTion/LoGiC.NET">LoGiC.NET</a> (For Making LoGiC.NET Obfuscator.) <br>
+DevT02 - <a href="https://github.com/DevT02/Junk-Remover">Junk-Remover</a> (Remove Useless Nops.) <br>
