@@ -16,14 +16,15 @@ namespace LogicDeobfuscator.Core
         
         private readonly IEnumerable<IProtection> protections = new IProtection[]
         {
-            // new ProxyAdder(), Not Done.
-            new Md5CheckSum(),
+            new AntiDe4dot(),
             new Watermark(),
-            new Junk(),
+            new Md5CheckSum(),
             new Renamer(),
+            new SystemMath(),
+            new ControlFlow(),
+            new SizeOf(),
             new StringDecryptor(),
-            new IntDecoder(),
-            new ModuleCleaner(),
+            new Junk()
         };
         
         public void Execute()

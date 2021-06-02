@@ -8,23 +8,16 @@ namespace LogicDeobfuscator.Protections
     public class Md5CheckSum : IProtection
     {
         public string Name => nameof(Md5CheckSum);
-        public string Description => "Removes hash checker/so called NoTampering protection.";
         public void Execute(Context ctx)
         {
             var globalType = ctx.Module.GlobalType;
-            foreach (var method in globalType.Methods.Where(m => m.HasBody && m.Body.HasInstructions).ToArray())
+            foreach (var method in globalType.Methods.Where(m => m.HasBody && m.Body.HasInstructions && m.Body.Instructions.Any(i => i.OpCode == OpCodes.Callvirt && i.Operand.ToString().Contains("ComputeHash"))).ToArray())
             {
-                if (method.Body.Instructions.Any(i => i.OpCode == OpCodes.Callvirt && i.Operand.ToString().Contains("ComputeHash")))
-                {
-                    globalType.Methods.Remove(method);
-                }
+                globalType.Methods.Remove(method);
             }
-            foreach (var instr in globalType.FindOrCreateStaticConstructor().Body.Instructions)
-            {
-                instr.OpCode = OpCodes.Nop;
-                instr.Operand = null;
-            }
-            globalType.FindOrCreateStaticConstructor().Body.Instructions.Insert(0, new Instruction(OpCodes.Ret));
+            var newBody = new CilBody();
+            newBody.Instructions.Insert(0, Instruction.Create(OpCodes.Ret));
+            globalType.FindOrCreateStaticConstructor().Body = newBody;
         }
     }
 }

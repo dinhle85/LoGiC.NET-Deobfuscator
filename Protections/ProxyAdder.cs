@@ -9,7 +9,6 @@ namespace LogicDeobfuscator.Protections
     public class ProxyAdder : IProtection
     {
         public string Name => nameof(ProxyAdder);
-        public string Description => "Fixes proxy calls.";
         private const int Intensity = 2;
         public void Execute(Context ctx)
         {

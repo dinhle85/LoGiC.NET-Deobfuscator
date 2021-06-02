@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
+using LogicDeobfuscator.Core;
 using LogicDeobfuscator.Interfaces;
 using LogicDeobfuscator.Models;
 
@@ -11,62 +13,70 @@ namespace LogicDeobfuscator.Protections
     public class StringDecryptor : IProtection
     {
         public string Name => nameof(StringDecryptor);
-        public string Description => "Decrypts strings encrypted by LoGiC.NET";
-        public static string Decrypt(string str)
+        private static string Decrypt(string str, int key)
         {
-            var array = "*$,;:!ù^*&é\"'(-è_çà)".ToCharArray();
-            str = array.Aggregate(str, (current, c) => current.Replace(c.ToString(), string.Empty));
-            return Encoding.UTF32.GetString(Convert.FromBase64String(str));
+            var builder = new StringBuilder();
+            foreach (var c in str)
+                builder.Append((char)(c - key));
+            return builder.ToString();
+        }
+        private static string DecryptString(string A_0, int A_2)
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var c in A_0.ToCharArray())
+            {
+                stringBuilder.Append((char)(c - A_2));
+            }
+            return stringBuilder.ToString();
         }
         public void Execute(Context ctx)
         {
-            MethodDef decMethod = null;
             foreach (var type in ctx.Module.GetTypes().Where(t => t.HasMethods))
             {
                 if (type == ctx.Module.GlobalType) continue;
                 foreach (var method in type.Methods.Where(m => m.HasBody && m.Body.HasInstructions))
                 {
+                    method.Body.SimplifyBranches();
                     var instr = method.Body.Instructions;
                     for (var i = 0; i < instr.Count; i++)
                     {
-                        if (instr[i].OpCode != OpCodes.Ldstr || instr[i + 1].OpCode != OpCodes.Call || instr[i + 1].Operand is not MethodDef meth) continue;
+                        if (instr[i].OpCode != OpCodes.Ldstr || !instr[i + 1].IsLdcI4() || !instr[i + 2].IsLdcI4() || !instr[i + 3].IsLdcI4() || !instr[i + 4].IsLdcI4() || !instr[i + 5].IsLdcI4() || instr[i + 6].OpCode != OpCodes.Call || instr[i + 6].Operand is not MethodDef dec) continue;
                         try
                         {
-                            if (meth.DeclaringType != ctx.Module.GlobalType && meth.DeclaringType2 != ctx.Module.GlobalType)
-                            {
-                                continue;
-                            }
-                            instr[i] = Instruction.Create(OpCodes.Ldstr, Decrypt(instr[i].Operand.ToString()));
+                            ctx.Module.GlobalType.Remove(dec);
                         }
                         catch
                         {
-                            // If fail try to invoke method.
-                            try
-                            {
-                                decMethod = instr[i + 1].Operand as MethodDef;
-                                if (decMethod.DeclaringType == ctx.Module.GlobalType)
-                                {
-                                    var decrypted = ctx.Asm.ManifestModule.ResolveMethod(meth.MDToken.ToInt32()).Invoke(null, new object[] {instr[i].Operand.ToString()}).ToString();
-                                    instr[i] = Instruction.Create(OpCodes.Ldstr, decrypted);
-                                }
-                                else
-                                {
-                                    ctx.Logger.Warning($"Couldn't decrypt string \"{instr[i].Operand}\" in {method.Name} at {i}");
-                                }
-                            }
-                            catch
-                            {
-                                ctx.Logger.Warning($"Couldn't decrypt string \"{instr[i].Operand}\" in {method.Name} at {i}");
-                            }
+                            // Already Removed.
                         }
+                        instr[i].Operand = DecryptString(instr[i].Operand.ToString(), instr[i + 2].GetLdcI4Value());
                         instr[i + 1].OpCode = OpCodes.Nop;
-                        instr[i + 1].Operand = null;
+                        instr[i + 2].OpCode = OpCodes.Nop;
+                        instr[i + 3].OpCode = OpCodes.Nop;
+                        instr[i + 4].OpCode = OpCodes.Nop;
+                        instr[i + 5].OpCode = OpCodes.Nop;
+                        instr[i + 6].OpCode = OpCodes.Nop;
                     }
+                    method.Body.OptimizeBranches();
+                    method.RemoveUselessNops();
                 }
             }
-            if (decMethod != null)
+            foreach (var type in ctx.Module.GetTypes().Where(t => t.HasMethods).ToArray())
             {
-                ctx.Module.GlobalType.Methods.Remove(decMethod);
+                foreach (var method in type.Methods.Where(m => m.HasBody && m.Body.HasInstructions))
+                {
+                    var instr = method.Body.Instructions;
+                    for (var i = 0; i < instr.Count; i++)
+                    {
+                        checkNext:
+                        if (instr[i].OpCode != OpCodes.Br || !instr[i].Operand.ToString().Contains("ldc.i4.1")) continue;
+                        instr.RemoveAt(i);
+                        if (instr[i] != instr.Last())
+                        {
+                            goto checkNext;
+                        }
+                    }
+                }
             }
         }
     }

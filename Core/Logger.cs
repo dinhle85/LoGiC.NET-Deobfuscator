@@ -27,13 +27,6 @@ namespace LogicDeobfuscator.Core
             Console.ResetColor();
         }
 
-        public void Debug(object msg)
-        {
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine($"[DBG]: {msg}");
-            Console.ResetColor();
-        }
-
         public void Error(object msg)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
