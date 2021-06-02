@@ -19,6 +19,8 @@ namespace LogicDeobfuscator.Core
                 _ => false
             };
         }
+        
+        // https://github.com/DevT02/Junk-Remover/blob/master/ConsoleAppLmao/Program.cs
         public static void RemoveUselessNops(this MethodDef method)
         {
             var instr = method.Body.Instructions;
@@ -32,32 +34,6 @@ namespace LogicDeobfuscator.Core
                     goto checkNext;
                 }
             }
-        }
-
-        public static void RemoveNegativeInstructions(this MethodDef method)
-        {
-            var instr = method.Body.Instructions;
-            for (var i = 0; i < instr.Count; i++)
-            {
-                checkNext:
-                if (instr[i].OpCode != OpCodes.Neg) continue;
-                method.Body.Instructions.RemoveAt(i);
-                if (instr[i] != instr.Last())
-                {
-                    goto checkNext;
-                }
-            }
-        }
-        
-        public static void De4dotBlocks(this MethodDef method)
-        {
-            var blocksCflowDeobfuscator = new BlocksCflowDeobfuscator();
-            var blocks = new Blocks(method);
-            blocksCflowDeobfuscator.Initialize(blocks);
-            blocksCflowDeobfuscator.Deobfuscate();
-            blocks.RepartitionBlocks();
-            blocks.GetCode(out var list, out var exceptionHandlers);
-            DotNetUtils.RestoreBody(method, list, exceptionHandlers);
         }
         
         private static bool IsNopBranchTarget(MethodDef method, Instruction nopInstr)
@@ -77,6 +53,33 @@ namespace LogicDeobfuscator.Core
             if (!method.Body.HasExceptionHandlers) return false;
             var exceptionHandlers = method.Body.ExceptionHandlers;
             return exceptionHandlers.Any(exceptionHandler => exceptionHandler.FilterStart == nopInstr || exceptionHandler.HandlerEnd == nopInstr || exceptionHandler.HandlerStart == nopInstr || exceptionHandler.TryEnd == nopInstr || exceptionHandler.TryStart == nopInstr);
+        }
+
+        public static void RemoveNegativeInstructions(this MethodDef method)
+        {
+            var instr = method.Body.Instructions;
+            for (var i = 0; i < instr.Count; i++)
+            {
+                checkNext:
+                if (instr[i].OpCode != OpCodes.Neg) continue;
+                method.Body.Instructions.RemoveAt(i);
+                if (instr[i] != instr.Last())
+                {
+                    goto checkNext;
+                }
+            }
+        }
+        
+        // https://github.com/MindSystemm/SuperCalculator/blob/cac79b73b7a0d125c0892d0d7cd28a686e0ebf53/Program.cs#L322
+        public static void De4dotBlocks(this MethodDef method)
+        {
+            var blocksCflowDeobfuscator = new BlocksCflowDeobfuscator();
+            var blocks = new Blocks(method);
+            blocksCflowDeobfuscator.Initialize(blocks);
+            blocksCflowDeobfuscator.Deobfuscate();
+            blocks.RepartitionBlocks();
+            blocks.GetCode(out var list, out var exceptionHandlers);
+            DotNetUtils.RestoreBody(method, list, exceptionHandlers);
         }
     }
 }
