@@ -1,9 +1,6 @@
 # LoGiC.NET-Deobfuscator
 ## Deobfuscator for LoGiC.NET Obfuscator (https://github.com/AnErrupTion/LoGiC.NET).
 
-# OUTDATED
-## Won't be fixed because protected assemblies on newest version don't even work.
-
 ### Usage:
 - Drag & Drop Protected Application onto Deobfuscator.
 
