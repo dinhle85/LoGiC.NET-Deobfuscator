@@ -16,6 +16,7 @@ namespace LogicDeobfuscator.Core
         
         private readonly IEnumerable<IProtection> protections = new IProtection[]
         {
+            //new ProxyAdder(), Simplifies Proxy Calls. Don't expect it to work.
             new AntiDe4dot(),
             new Watermark(),
             new Md5CheckSum(),
