@@ -30,12 +30,13 @@ Junk
 ## After Deobfuscation:
 ![bilde](https://user-images.githubusercontent.com/60292167/120541836-af8dc700-c3ea-11eb-8c78-dca727175111.png)
 
+<br>
+
 ## Before Proxy Call Simplifier:
 ![bilde](https://user-images.githubusercontent.com/60292167/121065207-ce180780-c7c8-11eb-9f6a-ed008bb3f9f7.png)
 
-
 ## After Proxy Call Simplifier:
-![bilde](https://user-images.githubusercontent.com/60292167/121064872-66fa5300-c7c8-11eb-8d03-12f9f1bb08f8.png)
+![bilde](https://user-images.githubusercontent.com/60292167/121065393-015a9680-c7c9-11eb-909a-7b9214a64ba4.png)
 
 
 ## Credits:
