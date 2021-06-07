@@ -13,7 +13,7 @@ Int Encoding:
 String Encryption
 Control Flow
 Anti De4dot
-Proxy Calls (Simplifier? Doesn't fix completely but simplfies them kek.)
+Proxy Calls (Simplifier? Doesn't fix completely but simplfies them kek. Migth not even work, I don't really know.)
 Anti Tamper
 Watermark
 Renamer
