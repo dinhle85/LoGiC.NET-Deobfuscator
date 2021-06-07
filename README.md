@@ -24,11 +24,19 @@ Junk
 - Deobfuscated application will most likely have some unreadable methods because of errors (Probably because this deobfuscator doesn't support proxy calls, but I haven't bothered checking why.) and or might not be able to run.
 - I will not fix this because LoGiC.NET is unstable and only meant for learning purposes.
 
-## Before:
+## Before Deobfuscation:
 ![bilde](https://user-images.githubusercontent.com/60292167/120541785-9e44ba80-c3ea-11eb-9236-ffcaa0947024.png)
 
-## After:
+## After Deobfuscation:
 ![bilde](https://user-images.githubusercontent.com/60292167/120541836-af8dc700-c3ea-11eb-8c78-dca727175111.png)
+
+## Before Proxy Call Simplifier:
+![bilde](https://user-images.githubusercontent.com/60292167/121065039-9a3ce200-c7c8-11eb-9268-02b504d9907a.png)
+
+
+## After Proxy Call Simplifier:
+![bilde](https://user-images.githubusercontent.com/60292167/121064872-66fa5300-c7c8-11eb-8d03-12f9f1bb08f8.png)
+
 
 ## Credits:
 0xd4d - <a href="https://github.com/0xd4d/dnlib">dnlib</a> (The Library I chose to use for making this deobfuscator.) <br>
