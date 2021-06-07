@@ -32,6 +32,7 @@ Junk
 
 <br>
 This is here so that if you want to use the proxy call simplifier you can uncomment it in Core/Deobfuscator.cs (Not tested with other protections.)
+
 ## Before Proxy Call Simplifier:
 ![bilde](https://user-images.githubusercontent.com/60292167/121065207-ce180780-c7c8-11eb-9f6a-ed008bb3f9f7.png)
 
