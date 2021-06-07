@@ -36,7 +36,7 @@ Junk
 ![bilde](https://user-images.githubusercontent.com/60292167/121065207-ce180780-c7c8-11eb-9f6a-ed008bb3f9f7.png)
 
 ## After Proxy Call Simplifier:
-![bilde](https://user-images.githubusercontent.com/60292167/121065393-015a9680-c7c9-11eb-909a-7b9214a64ba4.png)
+![bilde](https://user-images.githubusercontent.com/60292167/121065461-13d4d000-c7c9-11eb-84d2-cabc3a1e8a3d.png)
 
 
 ## Credits:
