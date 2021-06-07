@@ -13,15 +13,11 @@ Int Encoding:
 String Encryption
 Control Flow
 Anti De4dot
+Proxy Calls (Simplifier? Doesn't fix completely but simplfies them kek.)
 Anti Tamper
 Watermark
 Renamer
 Junk
-```
-
-### Unsupported:
-```
-- Proxy Calls
 ```
 
 ### Note:
