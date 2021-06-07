@@ -29,7 +29,7 @@ namespace LogicDeobfuscator.Protections
             ctx.Module.Name = Path.GetFileNameWithoutExtension(ctx.InputPath);
             foreach (var type in ctx.Module.GetTypes())
             {
-                if (type.CanRename(null))
+                if (type.CanRename())
                 {
                     type.Name = GenerateName();
                 }
@@ -43,7 +43,7 @@ namespace LogicDeobfuscator.Protections
                     .WithDegreeOfParallelism(typeMembers.Count)
                     .ForAll(member =>
                     {
-                        if (!member.CanRename(ctx.Module.EntryPoint)) return;
+                        if (!member.CanRename()) return;
                         member.Name = GenerateName();
                     });
             }

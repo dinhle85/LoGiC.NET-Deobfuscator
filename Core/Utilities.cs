@@ -8,7 +8,32 @@ namespace LogicDeobfuscator.Core
 {
     public static class Utilities
     {
-        public static bool CanRename(this object member, MethodDef ep)
+        public static bool CallsAnyMethod(this IMethod method, IMethod[] methods)
+        {
+            if (method is not {IsMethodDef: true})
+            {
+                return false;
+            }
+
+            var methodDef = method.ResolveMethodDef();
+            if (methodDef is not {HasBody: true} || !methodDef.Body.HasInstructions)
+            {
+                return false;
+            }
+            
+            var callsAnyMethod = false;
+            methodDef.Body.SimplifyBranches();
+            var instr = methodDef.Body.Instructions;
+            foreach (var instruction in instr)
+            {
+                if (instruction.OpCode != OpCodes.Call || instruction.Operand is not MethodDef callMethod || !methods.Contains(callMethod)) continue;
+                callsAnyMethod = true;
+            }
+            methodDef.Body.OptimizeBranches();
+            return callsAnyMethod;
+        }
+
+        public static bool CanRename(this object member)
         {
             return member switch
             {
