@@ -31,12 +31,13 @@ Junk
 ![bilde](https://user-images.githubusercontent.com/60292167/120541836-af8dc700-c3ea-11eb-8c78-dca727175111.png)
 
 <br>
-
+This is here so that if you want to use the proxy call simplifier you can uncomment it in Core/Deobfuscator.cs (Not tested with other protections.)
 ## Before Proxy Call Simplifier:
 ![bilde](https://user-images.githubusercontent.com/60292167/121065207-ce180780-c7c8-11eb-9f6a-ed008bb3f9f7.png)
 
 ## After Proxy Call Simplifier:
 ![bilde](https://user-images.githubusercontent.com/60292167/121065461-13d4d000-c7c9-11eb-84d2-cabc3a1e8a3d.png)
+Should be pretty easy to fix this, but I cba.
 
 
 ## Credits:
