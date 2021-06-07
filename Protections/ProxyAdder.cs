@@ -11,6 +11,7 @@ namespace LogicDeobfuscator.Protections
     // I have no idea what I'm really doing, had to rewrite this code like 80 times and still only partially works kek
     // If anyone wants to fix this shit, please do. I have given up on proxy calls lmfao
     // Don't judge plz, k thnx bai.
+    // LINQ GO BRRR
     public class ProxyAdder : IProtection
     {
         public string Name => nameof(ProxyAdder);
