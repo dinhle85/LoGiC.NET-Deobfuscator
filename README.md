@@ -38,6 +38,7 @@ This is here so that if you want to use the proxy call simplifier you can uncomm
 
 ## After Proxy Call Simplifier:
 ![bilde](https://user-images.githubusercontent.com/60292167/121065461-13d4d000-c7c9-11eb-84d2-cabc3a1e8a3d.png)
+
 Should be pretty easy to fix this, but I cba.
 
 
